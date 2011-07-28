@@ -1,5 +1,6 @@
-$.fn.dmWidgetContentCkEditorForm = function(widget)
-{
+(function($){
+  $.fn.dmWidgetContentCkEditorForm = function(widget)
+  {
 
     var self = this, $textarea = self.find('textarea.dm_ckeditor');
 
@@ -19,6 +20,7 @@ $.fn.dmWidgetContentCkEditorForm = function(widget)
         $textarea.text($textarea.val());
 
     });
-};
+  };
 
-window.CKEDITOR_BASEPATH = dm_configuration.relative_url_root+'/dmCkEditorPlugin/js/ckeditor/';
+  window.CKEDITOR_BASEPATH = dm_configuration.relative_url_root+'/dmCkEditorPlugin/js/ckeditor/';
+})(jQuery);
