@@ -18,8 +18,6 @@ class sfWidgetFormTextareaDmCkEditor extends sfWidgetFormTextarea
   {
     $this->addOption('config');
 
-    $this->setOption('config', array_merge($this->getDefaultConfig(), dmArray::get($options, 'config', array())));
-
     $this->addOption('ckeditor');
 
     return parent::configure($options, $attributes);
@@ -45,10 +43,12 @@ class sfWidgetFormTextareaDmCkEditor extends sfWidgetFormTextarea
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
+
+    $config = array_merge($this->getDefaultConfig(), (array) $this->getOption('config'));
     $attributes['class'] = dmArray::toHtmlCssClasses(array(
       dmArray::get($attributes, 'class'),
       'dm_ckeditor',
-      json_encode($this->getOption('config'))
+      json_encode($config)
     ));
 
     if($ckEditor = $this->getOption('ckeditor'))
